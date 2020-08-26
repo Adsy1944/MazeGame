@@ -13,8 +13,22 @@
 String user = (String)session.getAttribute("user");
 
 if (UserControls.getInstance().conCheck() == false) {
-	response.sendRedirect("index.jsp?message=Couldn't connect to database");
+	response.sendRedirect("index.jsp?message=Database connection failed");
 }
+
+String message = (String)request.getParameter("message");
+if (message == null) {
+	message = "";
+}
+
+String start = (String)request.getParameter("start");
+String position = "";
+
+if (start != null) {
+	position = "Start Position Set: " + start;
+}
+
+String initialise = (String)request.getParameter("initialise");
 %>
 </head>
 <body style="background: grey;">
@@ -32,26 +46,53 @@ if (UserControls.getInstance().conCheck() == false) {
 	<div class="container">
 		<div class="card">
 			<h1 class="card-title text-center">What would you like to do?</h1>
-			<div class="card-body">
-				<table>
-					<tr>
-						<td>	
-							<form action="initialise.jsp">
-								<button type="submit" class="btn btn-dark">Initialise Map</button>
-							</form>
-						</td>
-						<td>
-							<form action="randomPosition.jsp">
-								<button type="submit" class="btn btn-dark">Set Position</button>
-							</form>
-						</td>
-					<form action="startGame.jsp">
-						<button type="submit" class="btn btn-dark">Start Game</button>
-					</form>
-					</tr>
-				</table>
+			<div class="card-body justify-content-center">
+				<div class="row justify-content-center">
+					<div class="col-auto">
+						<table class="table table-center">
+							<tr>
+								<td class="text-center">	
+									<form action="initialise.jsp">
+										<button type="submit" class="btn btn-dark" name="initialise" id="initialise">Initialise Map</button>
+									</form>
+								</td>
+								<td class="text-center">
+									<form action="randomPosition.jsp">
+										<button type="submit" class="btn btn-dark" name="position" id="position" disabled>Set Position</button>
+									</form>
+								</td>
+								<td class="text-center">
+									<form action="startRoom.jsp">
+										<input type="text" hidden="true" name="startPos" id="startPos" value="<%=start %>">
+										<button type="submit" class="btn btn-dark" name="start" id="start" disabled>Start Game</button>
+									</form>
+								</td>
+							</tr>
+							<tr class="justify-content-center">
+								<td colspan="3" class="text-center">
+									<span class="text-danger text-center"><%=message %></span>
+									<span class="text-danger text-center"><%=position %></span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<script>
+		var initialise = <%=initialise%>;
+		if (initialise == true) {
+			console.log('Enabling Set Position');
+			$('#position').removeAttr("disabled");
+		}
+		
+		var start = <%=start%>;
+		if (start != 0 && start != null && start != "") {
+			console.log("Enabling Start Game");
+			$('#start').removeAttr("disabled");
+		}
+		
+	</script>
 </body>
 </html>

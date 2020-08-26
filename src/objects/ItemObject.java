@@ -4,13 +4,16 @@ public class ItemObject {
 	
 	private String itemName;
 	private int itemId;
-	
+	private int roomId;
 
 	public ItemObject(String itemName, int itemId) {
 		this.itemId = itemId;
 		this.itemName = itemName;
 	}
 	
+	public ItemObject() {
+	}
+
 	public String getItemName() {
 		return itemName;
 	}
@@ -25,6 +28,14 @@ public class ItemObject {
 
 	public void setItemId(int itemId) {
 		this.itemId = itemId;
+	}
+
+	public int getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 	
 }

@@ -45,7 +45,7 @@ if (message == null) {
 							</tr>
 							<tr>
 								<td>
-									<input class="form-control" type="text" id="userName" name="userName">
+									<input class="form-control" type="text" id="userName" name="userName" required>
 								</td>
 							</tr>
 							<tr>
