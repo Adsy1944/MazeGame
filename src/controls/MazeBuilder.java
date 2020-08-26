@@ -16,7 +16,8 @@ public class MazeBuilder {
 	}
 	
 	public MazeObject constructMaze(int mazeId) {
-		MazeObject maze = SqlBuildQueries.getInstance().getMaze(mazeId);
+		MazeObject maze = new MazeObject();
+		maze = SqlBuildQueries.getInstance().getMaze(mazeId);
 		maze.setRooms(SqlBuildQueries.getInstance().getRooms(mazeId));
 		for (int i = 0; i < maze.getRooms().size(); i++) {
 			RoomObject room = maze.getRooms().get(i);
@@ -25,7 +26,6 @@ public class MazeBuilder {
 			room.getSouthPassage().setLeadsTo(SqlBuildQueries.getInstance().getRoom(room.getSouthPassage().getLeadsToInt()));
 			room.getWestPassage().setLeadsTo(SqlBuildQueries.getInstance().getRoom(room.getWestPassage().getLeadsToInt()));
 		}
-		
 		return maze;
 	}
 
