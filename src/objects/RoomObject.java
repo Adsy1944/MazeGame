@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 public class RoomObject {
 	
-	private int roomID;
+	private int roomId;
 	private String roomName;
-	private int mazeID;
+	private int mazeId;
 	private PassageObject northPassage;
 	private PassageObject eastPassage;
 	private PassageObject southPassage;
 	private PassageObject westPassage;
-	private int deposit;
+	private boolean deposit;
 	private ArrayList<ItemObject> items;
 	
-	public RoomObject(int roomID, String roomName, int mazeID, PassageObject northPassage, PassageObject eastPassage, 
-			PassageObject southPassage, PassageObject westPassage, int deposit, ArrayList<ItemObject> items) {
-		this.roomID = roomID;
+	public RoomObject(int roomId, String roomName, int mazeId, PassageObject northPassage, PassageObject eastPassage, 
+			PassageObject southPassage, PassageObject westPassage, boolean deposit, ArrayList<ItemObject> items) {
+		this.roomId = roomId;
 		this.roomName = roomName;
-		this.mazeID = mazeID;
+		this.mazeId = mazeId;
 		this.northPassage = northPassage;
 		this.eastPassage = eastPassage;
 		this.southPassage = southPassage;
@@ -26,16 +26,16 @@ public class RoomObject {
 		this.deposit = deposit;
 		this.items = items;
 	}
-
+	
 	public RoomObject() {
 	}
-
-	public int getRoomID() {
-		return roomID;
+		
+	public int getRoomId() {
+		return roomId;
 	}
 
-	public void setRoomID(int roomID) {
-		this.roomID = roomID;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 
 	public String getRoomName() {
@@ -46,12 +46,12 @@ public class RoomObject {
 		this.roomName = roomName;
 	}
 
-	public int getMazeID() {
-		return mazeID;
+	public int getMazeId() {
+		return mazeId;
 	}
 
-	public void setMazeID(int mazeID) {
-		this.mazeID = mazeID;
+	public void setMazeId(int mazeId) {
+		this.mazeId = mazeId;
 	}
 
 	public PassageObject getNorthPassage() {
@@ -86,11 +86,11 @@ public class RoomObject {
 		this.westPassage = westPassage;
 	}
 
-	public int getDeposit() {
+	public boolean getDeposit() {
 		return deposit;
 	}
 
-	public void setDeposit(int deposit) {
+	public void setDeposit(boolean deposit) {
 		this.deposit = deposit;
 	}
 

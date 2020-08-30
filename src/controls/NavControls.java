@@ -18,7 +18,7 @@ public class NavControls {
 		public RoomObject getRoom(MazeObject maze, int i) {
 		RoomObject response = null;
 		for (int j = 0; j < maze.getRooms().size(); j++) {
-			if (maze.getRooms().get(j).getRoomID() == i) {
+			if (maze.getRooms().get(j).getRoomId() == i) {
 				response = maze.getRooms().get(j);
 			}
 		}

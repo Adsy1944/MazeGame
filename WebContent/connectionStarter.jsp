@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Adsy's Maze Game</title>
 <%
 String user = request.getParameter("userName");
 if (user == null) {

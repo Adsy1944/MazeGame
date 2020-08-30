@@ -54,14 +54,15 @@ public class SqlBuildQueries {
 			ResultSet result = stat.executeQuery(query);
 			while (result.next()) {
 				RoomObject room = new RoomObject();
-				room.setMazeID(mazeId);
-				room.setRoomID(Integer.parseInt(result.getString("room_id")));
+				room.setMazeId(mazeId);
+				room.setRoomId(Integer.parseInt(result.getString("room_id")));
 				room.setRoomName(result.getString("room_name"));
 				System.out.println("Loading " + room.getRoomName());
 				room.setNorthPassage(getPassage(Integer.parseInt(result.getString("north_passage"))));
 				room.setEastPassage(getPassage(Integer.parseInt(result.getString("east_passage"))));
 				room.setSouthPassage(getPassage(Integer.parseInt(result.getString("south_passage"))));
 				room.setWestPassage(getPassage(Integer.parseInt(result.getString("west_passage"))));
+				room.setItems(getItems(room.getRoomId()));
 				rooms.add(room);
 				
 			}
@@ -80,7 +81,7 @@ public class SqlBuildQueries {
 	public RoomObject getRoom(int roomId) {
 		RoomObject result = null;
 				for (int i = 0; i < roomsMemory.size(); i++) {
-			if (roomsMemory.get(i).getRoomID() == roomId) {
+			if (roomsMemory.get(i).getRoomId() == roomId) {
 				result = roomsMemory.get(i);
 			}
 		}
@@ -115,7 +116,7 @@ public class SqlBuildQueries {
 	public ArrayList<ItemObject> getItems(int roomId) {
 		ArrayList<ItemObject> items = new ArrayList<ItemObject>();
 		String threatQuery = "select item.item_id, item_name, room_id, threat_id, forfeit FROM item JOIN threat ON item.item_id = threat.item_id WHERE room_id= " + roomId + ";"; 
-		String treasureQuery = "select item.item_id, item_name, room_id, reasure_id, coins FROM item JOIN treasure ON item.item_id = threat.item_id WHERE room_id= " + roomId + ";"; 
+		String treasureQuery = "select item.item_id, item_name, room_id, treasure_id, coins FROM item JOIN treasure ON item.item_id = treasure.item_id WHERE room_id= " + roomId + ";"; 
 		Connection con = SqlConnection.getInstance().getConnection();
 		try {
 			Statement stat = con.createStatement();
@@ -186,7 +187,6 @@ public class SqlBuildQueries {
 			e.printStackTrace();
 			System.err.println("Couldn't load actions! threat ID: " + threatId);
 		}
-		
 		return actions;
 	}
 

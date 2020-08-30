@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Adsy's Maze Game</title>
 <%
 String passageId = (String)request.getParameter("passage");
 PassageObject passage = UserControls.getInstance().getPassage(passageId);

@@ -22,6 +22,7 @@ if (message == null) {
 }
 
 String start = (String)request.getParameter("start");
+session.setAttribute("start", start);
 String position = "";
 
 if (start != null) {
@@ -38,7 +39,7 @@ String initialise = (String)request.getParameter("initialise");
 				<button class="btn btn-dark">Adsys Maze Game</button>
 			</div>
 			<div class="col-sm-1 justify-content-right">
-				<button class="btn btn-dark"><%=user %></button>
+				<button class="btn btn-dark">Player: <%=user %></button>
 			</div>
 		</div>
 	</nav>

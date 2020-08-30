@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Adsy's Maze Game</title>
 <%
 boolean initialise = UserControls.getInstance().initialiseMaze(1);
 if (initialise == true) {

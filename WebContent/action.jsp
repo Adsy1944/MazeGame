@@ -7,8 +7,11 @@
 <meta charset="ISO-8859-1">
 <title>Adsy's Maze Game</title>
 <%
-int startPosition = UserControls.getInstance().getStartPosition();
-response.sendRedirect("startMenu.jsp?start=" + startPosition + "&initialise=true");
+String actionId = (String)request.getParameter("action");
+String room = (String)request.getParameter("room");
+
+UserControls.getInstance().doAction(actionId);
+response.sendRedirect("roomNavigator.jsp?startPos=" + room);
 %>
 </head>
 <body>

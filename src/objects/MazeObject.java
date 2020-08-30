@@ -8,6 +8,7 @@ public class MazeObject {
 	private String mazeName;
 	private String mazeDifficulty;
 	private ArrayList<RoomObject> rooms;
+	private int wealth = 0;
 	
 	public MazeObject(int mazeID, String mazeName, String mazeDifficulty, ArrayList<RoomObject> rooms) {
 		this.mazeID = mazeID;
@@ -51,6 +52,15 @@ public class MazeObject {
 		this.rooms = rooms;
 	}
 	
+	public int getWealth() {
+		return wealth;
+	}
 	
+	public void addWealth(int coin) {
+		wealth += coin;
+	}
 
+	public void setWealth(int coin) {
+		wealth = coin;
+	}
 }

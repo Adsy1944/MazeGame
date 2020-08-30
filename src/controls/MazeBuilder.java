@@ -8,6 +8,7 @@ public class MazeBuilder {
 	
 	private static MazeBuilder instance;
 	
+//	Makes an instance of MazeBuilder available.
 	public static MazeBuilder getInstance() {
 		if (instance == null) {
 			instance = new MazeBuilder();
@@ -15,6 +16,7 @@ public class MazeBuilder {
 		return instance;
 	}
 	
+//	Constructs the maze in memory from the database ready to be played.
 	public MazeObject constructMaze(int mazeId) {
 		MazeObject maze = new MazeObject();
 		maze = SqlBuildQueries.getInstance().getMaze(mazeId);
